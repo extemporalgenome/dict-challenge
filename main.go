@@ -50,18 +50,15 @@ func main() {
 			w.WriteByte('\n')
 		}
 	}
-	//w.Flush()
+	w.Flush()
 	if err := r.Err(); err != nil {
 		Exit(1, "Error reading words file:", err)
 	}
 }
 
-// es
-// aaccderrss
-
 // Match returns true if s is in t, which must each already be Alphagram processed.
 func Match(s, t []byte) bool {
-	//fmt.Printf("%q %q\n", t, s)
+	// algorithm compares two sorted byte slices in a single pass.
 	i := 0
 outer:
 	for _, b := range s {
